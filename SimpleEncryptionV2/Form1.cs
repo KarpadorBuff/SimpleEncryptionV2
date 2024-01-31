@@ -20,6 +20,7 @@ namespace SimpleEncryptionV2
         string filetext;
         string hash = "UwUbotAndreasxD";
         bool encrypted;
+        bool mlep;
         private void setall(bool idk)
         {
             folderpath = "";
@@ -46,13 +47,14 @@ namespace SimpleEncryptionV2
             if (idk)
                 filetext = File.ReadAllText(filepath);
             else filetext = blep.Text;
+            blep.Text = filetext;
             Debug.WriteLine("filepath: " + filepath + "\nfolderpath: " + folderpath + "\nfilename: " + filename + "\nextension: " + fileextension);
 
         }
 
         private void Encrypt()
         {
-            byte[] data = UTF8Encoding.UTF8.GetBytes(filetext);
+            byte[] data = UTF8Encoding.UTF8.GetBytes(blep.Text);
             using (MD5CryptoServiceProvider mD5 = new MD5CryptoServiceProvider())
             {
                 byte[] keys = mD5.ComputeHash(UTF8Encoding.UTF8.GetBytes(hash));
@@ -67,17 +69,21 @@ namespace SimpleEncryptionV2
         }
         private void Unencrypt()
         {
-            byte[] data = Convert.FromBase64String(realblep.Text); using (MD5CryptoServiceProvider mD5 = new MD5CryptoServiceProvider())
+            try
             {
-                byte[] keys = mD5.ComputeHash(UTF8Encoding.UTF8.GetBytes(hash));
-                using (TripleDESCryptoServiceProvider tripleDES = new TripleDESCryptoServiceProvider() { Key = keys, Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 })
+                byte[] data = Convert.FromBase64String(realblep.Text); using (MD5CryptoServiceProvider mD5 = new MD5CryptoServiceProvider())
                 {
-                    ICryptoTransform transform = tripleDES.CreateDecryptor();
-                    byte[] results = transform.TransformFinalBlock(data, 0, data.Length);
-                    blep.Text = UTF8Encoding.UTF8.GetString(results);
-                }
+                    byte[] keys = mD5.ComputeHash(UTF8Encoding.UTF8.GetBytes(hash));
+                    using (TripleDESCryptoServiceProvider tripleDES = new TripleDESCryptoServiceProvider() { Key = keys, Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 })
+                    {
+                        ICryptoTransform transform = tripleDES.CreateDecryptor();
+                        byte[] results = transform.TransformFinalBlock(data, 0, data.Length);
+                        blep.Text = UTF8Encoding.UTF8.GetString(results);
+                    }
 
+                }
             }
+            catch { }
 
 
         }
@@ -152,13 +158,26 @@ namespace SimpleEncryptionV2
 
         private void blep_TextChanged(object sender, EventArgs e)
         {
-            filetext = blep.Text;
-            Encrypt();
+            
+            if (mlep)
+                Encrypt();
         }
 
         private void realblep_TextChanged(object sender, EventArgs e)
         {
+            
+            if (!mlep)
+                Unencrypt();
+        }
 
+        private void realblep_Enter(object sender, EventArgs e)
+        {
+            mlep = false;
+        }
+
+        private void blep_Enter(object sender, EventArgs e)
+        {
+            mlep = true;
         }
     }
 }

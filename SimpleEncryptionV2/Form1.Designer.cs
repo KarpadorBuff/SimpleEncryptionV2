@@ -94,6 +94,7 @@
             this.blep.TabIndex = 5;
             this.blep.Text = "";
             this.blep.TextChanged += new System.EventHandler(this.blep_TextChanged);
+            this.blep.Enter += new System.EventHandler(this.blep_Enter);
             // 
             // realblep
             // 
@@ -104,6 +105,7 @@
             this.realblep.TabIndex = 6;
             this.realblep.Text = "";
             this.realblep.TextChanged += new System.EventHandler(this.realblep_TextChanged);
+            this.realblep.Enter += new System.EventHandler(this.realblep_Enter);
             // 
             // btnExport
             // 
