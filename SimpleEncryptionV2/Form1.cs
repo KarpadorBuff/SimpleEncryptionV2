@@ -179,5 +179,17 @@ namespace SimpleEncryptionV2
         {
             mlep = true;
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if(realblep.Text != null)
+            Clipboard.SetText(realblep.Text);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            realblep.Text = Clipboard.GetText();
+            Unencrypt();
+        }
     }
 }
