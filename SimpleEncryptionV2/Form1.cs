@@ -191,5 +191,17 @@ namespace SimpleEncryptionV2
             realblep.Text = Clipboard.GetText();
             Unencrypt();
         }
+
+        int a = 0;
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            if (a < 20) a++;
+            else
+            {
+                button3.Visible = true;
+                button4.Visible = true;
+            }
+
+        }
     }
 }
