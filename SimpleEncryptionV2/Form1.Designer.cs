@@ -39,19 +39,25 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.textbox_key = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureB1 = new System.Windows.Forms.PictureBox();
+            this.pictureB4 = new System.Windows.Forms.PictureBox();
+            this.pictureB3 = new System.Windows.Forms.PictureBox();
+            this.pictureB2 = new System.Windows.Forms.PictureBox();
+            this.pictureB6 = new System.Windows.Forms.PictureBox();
+            this.pictureB5 = new System.Windows.Forms.PictureBox();
+            this.pictureB7 = new System.Windows.Forms.PictureBox();
+            this.pictureB8 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureB1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureB4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureB3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureB2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureB6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureB5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureB7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureB8)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -60,7 +66,7 @@
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(16, 10);
+            this.button1.Location = new System.Drawing.Point(-1, -5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(268, 28);
             this.button1.TabIndex = 0;
@@ -71,22 +77,21 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = global::SimpleEncryptionV2.Properties.Resources.banana_happy;
             this.pictureBox1.Location = new System.Drawing.Point(0, 102);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(1007, 600);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabIndex = 30;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
             // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox1.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBox1.Location = new System.Drawing.Point(16, 14);
+            this.textBox1.Location = new System.Drawing.Point(-1, -1);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(242, 20);
             this.textBox1.TabIndex = 2;
@@ -103,7 +108,6 @@
             this.btnLoadFromFile.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnLoadFromFile.UseVisualStyleBackColor = true;
             this.btnLoadFromFile.Click += new System.EventHandler(this.LoadFromfilebutton);
-            this.btnLoadFromFile.MouseEnter += new System.EventHandler(this.button2_MouseEnter);
             // 
             // blep
             // 
@@ -183,77 +187,118 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // pictureBox2
+            // textbox_key
             // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.Image = global::SimpleEncryptionV2.Properties.Resources.banana_happy;
-            this.pictureBox2.Location = new System.Drawing.Point(715, -2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(292, 109);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 17;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.textbox_key.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.textbox_key.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textbox_key.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textbox_key.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.textbox_key.Location = new System.Drawing.Point(270, -1);
+            this.textbox_key.Name = "textbox_key";
+            this.textbox_key.PasswordChar = '-';
+            this.textbox_key.Size = new System.Drawing.Size(242, 26);
+            this.textbox_key.TabIndex = 23;
+            this.textbox_key.Text = "key";
+            this.textbox_key.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textbox_key.TextChanged += new System.EventHandler(this.textbox_key_TextChanged);
             // 
-            // pictureBox3
+            // label1
             // 
-            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox3.Image = global::SimpleEncryptionV2.Properties.Resources.banana_happy;
-            this.pictureBox3.Location = new System.Drawing.Point(0, 37);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(112, 33);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 18;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.label1.Location = new System.Drawing.Point(273, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(28, 13);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "KEY";
             // 
-            // pictureBox4
+            // pictureB1
             // 
-            this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox4.Image = global::SimpleEncryptionV2.Properties.Resources.banana_happy;
-            this.pictureBox4.Location = new System.Drawing.Point(220, -2);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(292, 109);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 19;
-            this.pictureBox4.TabStop = false;
-            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+            this.pictureB1.Image = global::SimpleEncryptionV2.Properties.Resources.banana_happy;
+            this.pictureB1.Location = new System.Drawing.Point(-1, 25);
+            this.pictureB1.Name = "pictureB1";
+            this.pictureB1.Size = new System.Drawing.Size(186, 48);
+            this.pictureB1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureB1.TabIndex = 31;
+            this.pictureB1.TabStop = false;
+            this.pictureB1.Click += new System.EventHandler(this.PictureB1);
             // 
-            // pictureBox5
+            // pictureB4
             // 
-            this.pictureBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox5.Image = global::SimpleEncryptionV2.Properties.Resources.banana_happy;
-            this.pictureBox5.Location = new System.Drawing.Point(506, 1);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(214, 70);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 20;
-            this.pictureBox5.TabStop = false;
-            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
+            this.pictureB4.Image = global::SimpleEncryptionV2.Properties.Resources.banana_happy;
+            this.pictureB4.Location = new System.Drawing.Point(507, -1);
+            this.pictureB4.Name = "pictureB4";
+            this.pictureB4.Size = new System.Drawing.Size(77, 76);
+            this.pictureB4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureB4.TabIndex = 32;
+            this.pictureB4.TabStop = false;
+            this.pictureB4.Click += new System.EventHandler(this.PictureB4);
             // 
-            // pictureBox6
+            // pictureB3
             // 
-            this.pictureBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox6.Image = global::SimpleEncryptionV2.Properties.Resources.banana_happy;
-            this.pictureBox6.Location = new System.Drawing.Point(133, 40);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(52, 34);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 21;
-            this.pictureBox6.TabStop = false;
-            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
+            this.pictureB3.Image = global::SimpleEncryptionV2.Properties.Resources.banana_happy;
+            this.pictureB3.Location = new System.Drawing.Point(360, 31);
+            this.pictureB3.Name = "pictureB3";
+            this.pictureB3.Size = new System.Drawing.Size(152, 71);
+            this.pictureB3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureB3.TabIndex = 33;
+            this.pictureB3.TabStop = false;
+            this.pictureB3.Click += new System.EventHandler(this.PictureB3);
             // 
-            // pictureBox7
+            // pictureB2
             // 
-            this.pictureBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox7.Image = global::SimpleEncryptionV2.Properties.Resources.banana_happy;
-            this.pictureBox7.Location = new System.Drawing.Point(182, 73);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(52, 34);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox7.TabIndex = 22;
-            this.pictureBox7.TabStop = false;
-            this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
+            this.pictureB2.Image = global::SimpleEncryptionV2.Properties.Resources.banana_happy;
+            this.pictureB2.Location = new System.Drawing.Point(191, 10);
+            this.pictureB2.Name = "pictureB2";
+            this.pictureB2.Size = new System.Drawing.Size(174, 92);
+            this.pictureB2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureB2.TabIndex = 34;
+            this.pictureB2.TabStop = false;
+            this.pictureB2.Click += new System.EventHandler(this.PictureB2);
+            // 
+            // pictureB6
+            // 
+            this.pictureB6.Image = global::SimpleEncryptionV2.Properties.Resources.banana_happy;
+            this.pictureB6.Location = new System.Drawing.Point(653, 44);
+            this.pictureB6.Name = "pictureB6";
+            this.pictureB6.Size = new System.Drawing.Size(58, 29);
+            this.pictureB6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureB6.TabIndex = 35;
+            this.pictureB6.TabStop = false;
+            this.pictureB6.Click += new System.EventHandler(this.PictureB6);
+            // 
+            // pictureB5
+            // 
+            this.pictureB5.Image = global::SimpleEncryptionV2.Properties.Resources.banana_happy;
+            this.pictureB5.Location = new System.Drawing.Point(580, -284);
+            this.pictureB5.Name = "pictureB5";
+            this.pictureB5.Size = new System.Drawing.Size(67, 359);
+            this.pictureB5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureB5.TabIndex = 36;
+            this.pictureB5.TabStop = false;
+            this.pictureB5.Click += new System.EventHandler(this.PictureB5);
+            // 
+            // pictureB7
+            // 
+            this.pictureB7.Image = global::SimpleEncryptionV2.Properties.Resources.banana_happy;
+            this.pictureB7.Location = new System.Drawing.Point(717, 12);
+            this.pictureB7.Name = "pictureB7";
+            this.pictureB7.Size = new System.Drawing.Size(119, 91);
+            this.pictureB7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureB7.TabIndex = 37;
+            this.pictureB7.TabStop = false;
+            this.pictureB7.Click += new System.EventHandler(this.PictureB7);
+            // 
+            // pictureB8
+            // 
+            this.pictureB8.Image = global::SimpleEncryptionV2.Properties.Resources.banana_happy;
+            this.pictureB8.Location = new System.Drawing.Point(842, 7);
+            this.pictureB8.Name = "pictureB8";
+            this.pictureB8.Size = new System.Drawing.Size(165, 95);
+            this.pictureB8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureB8.TabIndex = 38;
+            this.pictureB8.TabStop = false;
+            this.pictureB8.Click += new System.EventHandler(this.PictureB8);
             // 
             // Form1
             // 
@@ -261,6 +306,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SteelBlue;
             this.ClientSize = new System.Drawing.Size(1007, 702);
+            this.Controls.Add(this.pictureB8);
+            this.Controls.Add(this.pictureB7);
+            this.Controls.Add(this.pictureB5);
+            this.Controls.Add(this.pictureB6);
+            this.Controls.Add(this.pictureB3);
+            this.Controls.Add(this.pictureB4);
+            this.Controls.Add(this.pictureB1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textbox_key);
             this.Controls.Add(this.realblep);
             this.Controls.Add(this.blep);
             this.Controls.Add(this.btnLoadFromFile);
@@ -268,15 +322,10 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnExport);
-            this.Controls.Add(this.pictureBox7);
-            this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureB2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -284,12 +333,14 @@
             this.Text = "Banana Encryption";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureB1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureB4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureB3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureB2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureB6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureB5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureB7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureB8)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -307,12 +358,16 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.TextBox textbox_key;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureB1;
+        private System.Windows.Forms.PictureBox pictureB4;
+        private System.Windows.Forms.PictureBox pictureB3;
+        private System.Windows.Forms.PictureBox pictureB2;
+        private System.Windows.Forms.PictureBox pictureB6;
+        private System.Windows.Forms.PictureBox pictureB5;
+        private System.Windows.Forms.PictureBox pictureB7;
+        private System.Windows.Forms.PictureBox pictureB8;
     }
 }
 

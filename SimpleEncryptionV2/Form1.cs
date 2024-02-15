@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Media;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
@@ -18,11 +19,12 @@ namespace SimpleEncryptionV2
         string origin_filename;
         string origin_fileextension;
         string origin_filetext;
-        string hash = "UwUbotAndreasxD";
+        string hash;
         bool encrypted;
         bool textfieldbool;
-        public bool[] easteregg = new bool[6];
-        private void setall(bool idk)
+        public bool[] easteregg = new bool[7];
+        SoundPlayer Player = new SoundPlayer();
+        private void setall()
         {
             folderpath = "";
             origin_filename = "";
@@ -55,11 +57,30 @@ namespace SimpleEncryptionV2
             {
                 blep.Text = origin_filetext;
                 Encrypt();
-            } 
+            }
             Debug.WriteLine("filepath: " + filepath + "\nfolderpath: " + folderpath + "\nfilename: " + origin_filename + "\nextension: " + origin_fileextension);
 
         }
+        private void PlaySound(Stream stream, bool playLooping)
+        {
+            if (Player != null)
+            {
+                Player.Stop();
+                Player.Dispose();
+                Player = null;
+            }
+            if (stream == null) return;
+            Player = new SoundPlayer(stream);
 
+            if (playLooping)
+            {
+                Player.PlayLooping();
+            }
+            else
+            {
+                Player.Play();
+            }
+        }
         private void Encrypt()
         {
             byte[] data = UTF8Encoding.UTF8.GetBytes(blep.Text);
@@ -101,11 +122,11 @@ namespace SimpleEncryptionV2
             ofd.ShowDialog();
             textBox1.Text = ofd.FileName;
             filepath = ofd.FileName;
-            if(textBox1.Text.Contains("_encrypted"))
-            setall(true);else
-                setall(false);
+            if (textBox1.Text.Contains("_encrypted"))
+                setall();
+            else
+                setall();
         }
-
         private void LoadFromfilebutton(object sender, EventArgs e)
         {
             if (encrypted)
@@ -121,18 +142,13 @@ namespace SimpleEncryptionV2
                 blep.Update();
             }
         }
-
-        private void button2_MouseEnter(object sender, EventArgs e)
-        {
-
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
+            textbox_key.Text = Properties.Settings.Default.key;
+            hash = textbox_key.Text;
             folderpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\";
             textBox1.Text = folderpath;
         }
-
         private void BtnExportEncrypted_Click(object sender, EventArgs e)
         {
 
@@ -148,12 +164,11 @@ namespace SimpleEncryptionV2
                     textBox1.Text += ".txt";
                 }
                 filepath = textBox1.Text;
-                setall(false);
+                setall();
                 Debug.WriteLine("Written to:" + folderpath + origin_filename + "_encrypted" + origin_fileextension);
                 File.WriteAllText(folderpath + origin_filename + "_encrypted" + origin_fileextension, realblep.Text);
             }
         }
-
         private void BtnExportUnencrypted(object sender, EventArgs e)
         {
             if (textBox1.Text == folderpath)
@@ -166,101 +181,127 @@ namespace SimpleEncryptionV2
                 Debug.WriteLine("Written to:" + folderpath + origin_filename + origin_fileextension);
             }
         }
-
         private void blep_TextChanged(object sender, EventArgs e)
         {
-            
+
             if (textfieldbool)
                 Encrypt();
         }
-
         private void realblep_TextChanged(object sender, EventArgs e)
         {
-            
+
             if (!textfieldbool)
                 Unencrypt();
         }
-
         private void realblep_Enter(object sender, EventArgs e)
         {
             textfieldbool = false;
         }
-
         private void blep_Enter(object sender, EventArgs e)
         {
             textfieldbool = true;
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
-            if(realblep.Text != null)
-            Clipboard.SetText(realblep.Text);
+            if (realblep.Text != null)
+                Clipboard.SetText(realblep.Text);
         }
-
         private void button4_Click(object sender, EventArgs e)
         {
             realblep.Text = Clipboard.GetText();
             Unencrypt();
         }
-
-        int a = 0;
-        private void CheckEasterEgg()
+        private void textbox_key_TextChanged(object sender, EventArgs e)
         {
-            if (easteregg[0] && easteregg[1] && easteregg[2] && easteregg[3] && easteregg[4] && easteregg[5])
+            Properties.Settings.Default.key = textbox_key.Text;
+            Properties.Settings.Default.Save();
+            Debug.WriteLine(Properties.Settings.Default.key);
+            hash = Properties.Settings.Default.key;
+            if (encrypted) Unencrypt();
+            else Encrypt();
+        }
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+            Debug.WriteLine("eastereggLength: " + easteregg.Length);
+            if (easteregg[easteregg.Length - 1])
             {
-                pictureBox1.BringToFront();
+                blep.BringToFront();
+                realblep.BringToFront();
+                for (int i = 0; i < easteregg.Length; i++)
+                {
+                    PlaySound(Properties.Resources.Bell1, false);
+                    easteregg[i] = false;
+                }
             }
         }
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            blep.BringToFront();
-            realblep.BringToFront();
-            for (int i = 0; i < easteregg.Length; i++)
-            {
-                easteregg[i] = false;
-            }
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
+        private void PictureB6(object sender, EventArgs e)
         {
             easteregg[0] = true;
-            CheckEasterEgg();
+            for (int i = 1; i < easteregg.Length; i++) easteregg[i] = false;
+            PlaySound(Properties.Resources.Bell1, false); Debug.WriteLine("Sound");
         }
-
-        private void pictureBox6_Click(object sender, EventArgs e)
+        private void PictureB1(object sender, EventArgs e)
         {
-            easteregg[1] = true;
-            CheckEasterEgg();
-
+            if (easteregg[0])
+            {
+                easteregg[1] = true;
+                PlaySound(Properties.Resources.Bell1, false); Debug.WriteLine("Sound");
+            }
+            else for (int i = 0; i < easteregg.Length; i++) easteregg[i] = false;
         }
-
-        private void pictureBox7_Click(object sender, EventArgs e)
+        private void PictureB3(object sender, EventArgs e)
         {
-            easteregg[2] = true;
-            CheckEasterEgg();
-
+            if (easteregg[1])
+            {
+                easteregg[2] = true;
+                PlaySound(Properties.Resources.Bell1, false); Debug.WriteLine("Sound");
+            }
+            else for (int i = 0; i < easteregg.Length; i++) easteregg[i] = false;
         }
-
-        private void pictureBox4_Click(object sender, EventArgs e)
+        private void PictureB4(object sender, EventArgs e)
         {
-            easteregg[3] = true;
-            CheckEasterEgg();
-
+            if (easteregg[2])
+            {
+                easteregg[3] = true;
+                PlaySound(Properties.Resources.Bell1, false); Debug.WriteLine("Sound");
+            }
+            else for (int i = 0; i < easteregg.Length; i++) easteregg[i] = false;
         }
-
-        private void pictureBox5_Click(object sender, EventArgs e)
+        private void PictureB7(object sender, EventArgs e)
         {
-            easteregg[4] = true;
-            CheckEasterEgg();
-
+            if (easteregg[3])
+            {
+                PlaySound(Properties.Resources.Bell1, false); Debug.WriteLine("Sound");
+                easteregg[4] = true;
+            }
+            else for (int i = 0; i < easteregg.Length; i++) easteregg[i] = false;
         }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void PictureB2(object sender, EventArgs e)
         {
-            easteregg[5] = true;
-            CheckEasterEgg();
+            if (easteregg[4])
+            {
+                PlaySound(Properties.Resources.Bell1, false); Debug.WriteLine("Sound");
+                easteregg[5] = true;
+            }
+            else for (int i = 0; i < easteregg.Length; i++) easteregg[i] = false;
         }
-
-
+        private void PictureB8(object sender, EventArgs e)
+        {
+            if (easteregg[5])
+            {
+                PlaySound(Properties.Resources.Bell1, false); Debug.WriteLine("Sound");
+                easteregg[6] = true;
+            }
+            else for (int i = 0; i < easteregg.Length; i++) easteregg[i] = false;
+        }
+        private void PictureB5(object sender, EventArgs e)
+        {
+            if (easteregg[6])
+            {
+                PlaySound(Properties.Resources.Bell1, true); Debug.WriteLine("Sound");
+                pictureBox1.BringToFront();
+            }
+            else for (int i = 0; i < easteregg.Length; i++) easteregg[i] = false;
+        }
     }
 }
