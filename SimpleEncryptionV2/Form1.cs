@@ -21,6 +21,7 @@ namespace SimpleEncryptionV2
         string hash = "UwUbotAndreasxD";
         bool encrypted;
         bool mlep;
+        public bool[] easteregg = new bool[6];
         private void setall(bool idk)
         {
             folderpath = "";
@@ -193,15 +194,63 @@ namespace SimpleEncryptionV2
         }
 
         int a = 0;
+        private void CheckEasterEgg()
+        {
+            if (easteregg[0] && easteregg[1] && easteregg[2] && easteregg[3] && easteregg[4] && easteregg[5])
+            {
+                pictureBox1.BringToFront();
+            }
+        }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            if (a < 20) a++;
-            else
+            blep.BringToFront();
+            realblep.BringToFront();
+            for (int i = 0; i < easteregg.Length; i++)
             {
-                button3.Visible = true;
-                button4.Visible = true;
+                easteregg[i] = false;
             }
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            easteregg[0] = true;
+            CheckEasterEgg();
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            easteregg[1] = true;
+            CheckEasterEgg();
 
         }
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+            easteregg[2] = true;
+            CheckEasterEgg();
+
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            easteregg[3] = true;
+            CheckEasterEgg();
+
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            easteregg[4] = true;
+            CheckEasterEgg();
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            easteregg[5] = true;
+            CheckEasterEgg();
+        }
+
+
     }
 }
