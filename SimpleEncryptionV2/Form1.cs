@@ -15,41 +15,48 @@ namespace SimpleEncryptionV2
         }
         string filepath;
         string folderpath;
-        string filename;
-        string fileextension;
-        string filetext;
+        string origin_filename;
+        string origin_fileextension;
+        string origin_filetext;
         string hash = "UwUbotAndreasxD";
         bool encrypted;
-        bool mlep;
+        bool textfieldbool;
         public bool[] easteregg = new bool[6];
         private void setall(bool idk)
         {
             folderpath = "";
-            filename = "";
-            fileextension = "";
-            string[] fp = filepath.Split('\\');
+            origin_filename = "";
+            origin_fileextension = "";
+            string[] folderpathtmp = filepath.Split('\\');
             //folderpath
-            for (int i = 0; i < fp.Length - 1; i++)
+            for (int i = 0; i < folderpathtmp.Length - 1; i++)
             {
-                folderpath += fp[i] + "\\";
+                folderpath += folderpathtmp[i] + "\\";
             }
-            string[] fp2 = fp[fp.Length - 1].Split('.');
-            if (fp2[0].Contains("_encrypted"))
+            string[] folderpathtmp2 = folderpathtmp[folderpathtmp.Length - 1].Split('.');
+            if (folderpathtmp2[0].Contains("_encrypted"))
             {
                 encrypted = true;
-                filename = fp2[0].Substring(0, fp2[0].Length - 10);
+                origin_filename = folderpathtmp2[0].Substring(0, folderpathtmp2[0].Length - 10);
             }
             else
             {
                 encrypted = false;
-                filename = fp2[0];
+                origin_filename = folderpathtmp2[0];
             }
-            fileextension = "." + fp2[1];
-            if (idk)
-                filetext = File.ReadAllText(filepath);
-            else filetext = blep.Text;
-            blep.Text = filetext;
-            Debug.WriteLine("filepath: " + filepath + "\nfolderpath: " + folderpath + "\nfilename: " + filename + "\nextension: " + fileextension);
+            origin_fileextension = "." + folderpathtmp2[1];
+            origin_filetext = File.ReadAllText(filepath);
+            if (encrypted)
+            {
+                realblep.Text = origin_filetext;
+                Unencrypt();
+            }
+            else
+            {
+                blep.Text = origin_filetext;
+                Encrypt();
+            } 
+            Debug.WriteLine("filepath: " + filepath + "\nfolderpath: " + folderpath + "\nfilename: " + origin_filename + "\nextension: " + origin_fileextension);
 
         }
 
@@ -94,21 +101,24 @@ namespace SimpleEncryptionV2
             ofd.ShowDialog();
             textBox1.Text = ofd.FileName;
             filepath = ofd.FileName;
-            setall(true);
+            if(textBox1.Text.Contains("_encrypted"))
+            setall(true);else
+                setall(false);
         }
 
         private void LoadFromfilebutton(object sender, EventArgs e)
         {
             if (encrypted)
             {
-                Debug.WriteLine("filetext: " + filetext);
-                realblep.Text = filetext;
+                realblep.Text = origin_filetext;
                 Unencrypt();
+                realblep.Update();
             }
             else
             {
-                blep.Text = filetext;
+                blep.Text = origin_filetext;
                 Encrypt();
+                blep.Update();
             }
         }
 
@@ -139,8 +149,8 @@ namespace SimpleEncryptionV2
                 }
                 filepath = textBox1.Text;
                 setall(false);
-                Debug.WriteLine("Written to:" + folderpath + filename + "_encrypted" + fileextension);
-                File.WriteAllText(folderpath + filename + "_encrypted" + fileextension, realblep.Text);
+                Debug.WriteLine("Written to:" + folderpath + origin_filename + "_encrypted" + origin_fileextension);
+                File.WriteAllText(folderpath + origin_filename + "_encrypted" + origin_fileextension, realblep.Text);
             }
         }
 
@@ -152,33 +162,33 @@ namespace SimpleEncryptionV2
             }
             else
             {
-                File.WriteAllText(folderpath + filename + fileextension, blep.Text);
-                Debug.WriteLine("Written to:" + folderpath + filename + fileextension);
+                File.WriteAllText(folderpath + origin_filename + origin_fileextension, blep.Text);
+                Debug.WriteLine("Written to:" + folderpath + origin_filename + origin_fileextension);
             }
         }
 
         private void blep_TextChanged(object sender, EventArgs e)
         {
             
-            if (mlep)
+            if (textfieldbool)
                 Encrypt();
         }
 
         private void realblep_TextChanged(object sender, EventArgs e)
         {
             
-            if (!mlep)
+            if (!textfieldbool)
                 Unencrypt();
         }
 
         private void realblep_Enter(object sender, EventArgs e)
         {
-            mlep = false;
+            textfieldbool = false;
         }
 
         private void blep_Enter(object sender, EventArgs e)
         {
-            mlep = true;
+            textfieldbool = true;
         }
 
         private void button3_Click(object sender, EventArgs e)

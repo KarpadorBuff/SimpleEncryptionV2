@@ -113,7 +113,7 @@
             this.blep.ForeColor = System.Drawing.SystemColors.Window;
             this.blep.Location = new System.Drawing.Point(0, 102);
             this.blep.Name = "blep";
-            this.blep.Size = new System.Drawing.Size(500, 600);
+            this.blep.Size = new System.Drawing.Size(501, 600);
             this.blep.TabIndex = 5;
             this.blep.Text = "Text Here";
             this.blep.TextChanged += new System.EventHandler(this.blep_TextChanged);
